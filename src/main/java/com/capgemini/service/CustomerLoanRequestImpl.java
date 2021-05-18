@@ -38,4 +38,13 @@ public class CustomerLoanRequestImpl implements ICustomerLoanRequestService {
 		return "Record Deleted Sucessfully";
 	}
 
+	@Override
+	public CustomerLoanRequest findById(int id) {
+		if (!customerLoanRequestRepository.existsById(id)) {
+			throw new CustomerLoanRequestNotFoundException(" Custmor Loan Request Not Found");
+		}
+		CustomerLoanRequest cLR = customerLoanRequestRepository.findById(id).get();
+		return cLR;
+	}
+
 }
